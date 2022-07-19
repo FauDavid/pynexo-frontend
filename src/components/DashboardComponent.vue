@@ -121,6 +121,7 @@
 </template>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans');
 .dashboard {
     display: flex;
     flex-direction: column;
