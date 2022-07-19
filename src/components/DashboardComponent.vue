@@ -18,7 +18,7 @@
             <v-card elevation="0" color="#F1F3F6" class="balance-card">
                 <div class="balance-card-text">
                     <v-card-title class="balance-card-text-money">
-                        <p><b>$40,50</b></p>
+                        <p style="color: #3A4276"><b>$40,50</b></p>
                     </v-card-title>
                     <v-card-subtitle class="balance-card-text-balance">
                         <p>Actual balance</p>
@@ -38,13 +38,13 @@
                 </div>
                 <div class="send-voucher-icon">
                     <v-btn icon>
-                        <v-icon color="#1B1D28">mdi mdi-qrcode</v-icon>
+                        <v-icon color="#3A4276">mdi mdi-qrcode</v-icon>
                     </v-btn>
                 </div>
             </div>
             <div class="send-voucher-users">
                 <v-btn elevation="0" fab color="#49D8A4">
-                    <v-icon color="#1B1D28">mdi mdi-plus</v-icon>
+                    <v-icon color="#3A4276">mdi mdi-plus</v-icon>
                 </v-btn>
                 <v-card elevation="0" color="#F1F3F6" class="send-voucher-user-card">
                     <div class="send-voucher-user-card-content">
@@ -53,7 +53,7 @@
                             </v-img>
                         </v-avatar>
                         <v-card-title class="send-voucher-user-card-text">
-                            <p>Diego</p>
+                            <p>Bob</p>
                         </v-card-title>
                     </div>
                 </v-card>
@@ -64,7 +64,7 @@
                             </v-img>
                         </v-avatar>
                         <v-card-title class="send-voucher-user-card-text">
-                            <p>Carolina</p>
+                            <p>Alice</p>
                         </v-card-title>
                     </div>
                 </v-card>
@@ -77,13 +77,13 @@
                 </div>
                 <div class="send-voucher-icon">
                     <v-btn icon>
-                        <v-icon color="#1B1D28">mdi mdi-tune</v-icon>
+                        <v-icon color="#3A4276">mdi mdi-tune</v-icon>
                     </v-btn>
                 </div>
             </div>
             <div class="services">
                 <div class="service-card">
-                    <v-btn class="service-card-icon" icon large color="#1B1D28">
+                    <v-btn class="service-card-icon" icon large color="#3A4276">
                         <v-icon>mdi mdi-ticket-percent-outline</v-icon>
                     </v-btn>
                     <div class="service-card-text">
@@ -91,7 +91,7 @@
                     </div>
                 </div>
                 <div class="service-card">
-                    <v-btn class="service-card-icon" icon large color="#1B1D28">
+                    <v-btn class="service-card-icon" icon large color="#3A4276">
                         <v-icon>mdi mdi-store-marker-outline</v-icon>
                     </v-btn>
                     <div class="service-card-text">
@@ -99,7 +99,7 @@
                     </div>
                 </div>
                 <div class="service-card">
-                    <v-btn class="service-card-icon" icon large color="#1B1D28">
+                    <v-btn class="service-card-icon" icon large color="#3A4276">
                         <v-icon>mdi mdi-percent-circle-outline</v-icon>
                     </v-btn>
                     <div class="service-card-text">
@@ -107,7 +107,7 @@
                     </div>
                 </div>
                 <div class="service-card">
-                    <v-btn class="service-card-icon" icon large color="#1B1D28">
+                    <v-btn class="service-card-icon" icon large color="#3A4276">
                         <v-icon>mdi mdi-help-circle-outline</v-icon>
                     </v-btn>
                     <div class="service-card-text">
@@ -282,6 +282,7 @@
     order: 1;
     flex-grow: 0;
     border-radius: 12px;
+    width: max-content;
 }
 
 .send-voucher-user-card-content {
@@ -298,7 +299,7 @@
 .send-voucher-user-card-text {
     font-family: 'IBM Plex Sans';
     font-style: normal;
-    font-size: 16px;
+    font-size: 14px;
     text-align: center;
     line-height: 0;
     color: #3A4276;
@@ -333,6 +334,7 @@
     flex: none;
     order: 0;
     flex-grow: 0;
+    color: #3A4276;
 }
 
 .service-card-text {

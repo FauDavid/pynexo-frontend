@@ -15,7 +15,6 @@
                 <br />
                 <br />
                 Totally <b>free</b>.
-
             </p>
             <v-btn color="#49D8A4">
                 <b>Sign in</b>
@@ -61,11 +60,10 @@
         flex-direction: column;
         align-items: flex-start;
         padding: 0px;
-        gap: 47px;
+        gap: 48px;
         font-family: 'IBM Plex Sans';
         font-style: normal;
-        width: 190px;
-        height: 477.03px;
+        max-width: 50%;
         flex: none;
         order: 1;
         flex-grow: 0;
