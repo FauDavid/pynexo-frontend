@@ -1,9 +1,349 @@
 <template>
-    <v-app>
-        <v-main>
-            <keep-alive>
-                <router-view></router-view>
-            </keep-alive>
-        </v-main>
-    </v-app>
+    <div class="dashboard">
+        <div class="top">
+            <div class="top-logo">
+                <v-img src="../assets/logo-horizontal.svg"></v-img>
+            </div>
+            <v-spacer></v-spacer>
+            <div class="top-menu">
+                <v-btn icon>
+                    <v-icon color="#3A4276"> mdi mdi-dots-horizontal</v-icon>
+                </v-btn>
+            </div>
+        </div>
+        <div class="my-account">
+            <div class="my-account-text">
+                <p>My account</p>
+            </div>
+            <v-card elevation="0" color="#F1F3F6" class="balance-card">
+                <div class="balance-card-text">
+                    <v-card-title class="balance-card-text-money">
+                        <p><b>$40,50</b></p>
+                    </v-card-title>
+                    <v-card-subtitle class="balance-card-text-balance">
+                        <p>Actual balance</p>
+                    </v-card-subtitle>
+                </div>
+                <div class="balance-card-button">
+                    <v-btn elevation="0" fab color="#49D8A4">
+                        <v-icon color="#1B1D28">mdi mdi-plus</v-icon>
+                    </v-btn>
+                </div>
+            </v-card>
+        </div>
+        <div class="send-voucher">
+            <div class="send-voucher-top">
+                <div class="send-voucher-text">
+                    <p>Send a voucher</p>
+                </div>
+                <div class="send-voucher-icon">
+                    <v-btn icon>
+                        <v-icon color="#1B1D28">mdi mdi-qrcode</v-icon>
+                    </v-btn>
+                </div>
+            </div>
+            <div class="send-voucher-users">
+                <v-btn elevation="0" fab color="#49D8A4">
+                    <v-icon color="#1B1D28">mdi mdi-plus</v-icon>
+                </v-btn>
+                <v-card elevation="0" color="#F1F3F6" class="send-voucher-user-card">
+                    <div class="send-voucher-user-card-content">
+                        <v-avatar size="56">
+                            <v-img src="https://cdn.pixabay.com/photo/2020/06/24/19/12/cabbage-5337431_1280.jpg">
+                            </v-img>
+                        </v-avatar>
+                        <v-card-title class="send-voucher-user-card-text">
+                            <p>Diego</p>
+                        </v-card-title>
+                    </div>
+                </v-card>
+                <v-card elevation="0" color="#F1F3F6" class="send-voucher-user-card">
+                    <div class="send-voucher-user-card-content">
+                        <v-avatar size="56">
+                            <v-img src="https://cdn.pixabay.com/photo/2020/06/24/19/12/cabbage-5337431_1280.jpg">
+                            </v-img>
+                        </v-avatar>
+                        <v-card-title class="send-voucher-user-card-text">
+                            <p>Carolina</p>
+                        </v-card-title>
+                    </div>
+                </v-card>
+            </div>
+        </div>
+        <div class="send-voucher">
+            <div class="send-voucher-top">
+                <div class="send-voucher-text">
+                    <p>Services</p>
+                </div>
+                <div class="send-voucher-icon">
+                    <v-btn icon>
+                        <v-icon color="#1B1D28">mdi mdi-tune</v-icon>
+                    </v-btn>
+                </div>
+            </div>
+            <div class="services">
+                <div class="service-card">
+                    <v-btn class="service-card-icon" icon large color="#1B1D28">
+                        <v-icon>mdi mdi-ticket-percent-outline</v-icon>
+                    </v-btn>
+                    <div class="service-card-text">
+                        <p>Use voucher</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <v-btn class="service-card-icon" icon large color="#1B1D28">
+                        <v-icon>mdi mdi-store-marker-outline</v-icon>
+                    </v-btn>
+                    <div class="service-card-text">
+                        <p>Affiliated shops</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <v-btn class="service-card-icon" icon large color="#1B1D28">
+                        <v-icon>mdi mdi-percent-circle-outline</v-icon>
+                    </v-btn>
+                    <div class="service-card-text">
+                        <p>Discounts in shops</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <v-btn class="service-card-icon" icon large color="#1B1D28">
+                        <v-icon>mdi mdi-help-circle-outline</v-icon>
+                    </v-btn>
+                    <div class="service-card-text">
+                        <p>Customer support</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </template>
+
+<style scoped>
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 28px 0px;
+    position: relative;
+    background: #FFFFFF;
+}
+
+.top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.top-logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.top-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.my-account {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    width: 100%;
+}
+
+.my-account-text {
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    color: #3A4276;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.balance-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    gap: 100px;
+    background: #F1F3F6;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.balance-card-text {
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    line-height: 0;
+}
+
+.balance-card-text-money {
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 34px;
+    color: #171822;
+}
+
+.balance-card-text-balance {
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    color: #3A4276;
+}
+
+.balance-card-button {
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    padding-right: 20px;
+}
+
+.send-voucher {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+    width: 100%;
+}
+
+.send-voucher-top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: inherit;
+    height: inherit;
+}
+
+.send-voucher-text {
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    color: #3A4276;
+    order: 0;
+}
+
+.send-voucher-icon {
+    order: 1;
+    padding-bottom: 10px;
+}
+
+.send-voucher-users {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    flex: none;
+    order: 1;
+}
+
+.send-voucher-user-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 5px;
+    background: #F1F3F6;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    border-radius: 12px;
+}
+
+.send-voucher-user-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    gap: 5px;
+}
+
+.send-voucher-user-card-text {
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-size: 16px;
+    text-align: center;
+    line-height: 0;
+    color: #3A4276;
+}
+
+.services {
+    display: grid;
+    grid-auto-flow: column;
+    grid-column-gap: 20px;
+    align-items: center;
+    padding: 0px;
+    background: #FFFFFF;
+    flex: none;
+}
+
+.service-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    gap: 10px;
+}
+
+.service-card-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #F1F3F6;
+    width: 64px;
+    height: 64px;
+    border-radius: 12px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.service-card-text {
+    font-family: 'IBM Plex Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    text-align: center;
+    color: #7B7F9E;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+</style>

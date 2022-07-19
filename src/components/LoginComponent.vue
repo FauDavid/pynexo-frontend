@@ -1,32 +1,32 @@
 <template>
     <div class="login">
         <div class="banner">
-            <v-img :src="isMobile ? srcMobile : srcDesktop">
+            <v-img aspect-ratio :src="srcMobile">
             </v-img>
         </div>
         <div class="login-text">
             <v-img src="../assets/logo-horizontal.svg">
             </v-img>
-            <p>La solución para el redondeo y los vales.
+            <p>The solution for rounding and vouchers.
                 <br />
                 <br />
-                Puede empezar desde hoy, para ser parte de nuestros locales
-                adheridos o para utilizar los vales.
+                You can start from today, to be part of our premises
+                adhered or to use the vouchers.
                 <br />
                 <br />
-                Totalmente <b>gratis</b>.
+                Totally <b>free</b>.
 
             </p>
             <v-btn color="#49D8A4">
-                Ingresar
+                <b>Sign in</b>
                 <v-icon right>
                     mdi mdi-arrow-right
                 </v-icon>
             </v-btn>
 
-            <v-btn text>
-                Registrarse
-            </v-btn>
+            <a style="color: #212330">
+                Don't have an account? <b>Sign up</b>
+            </a>
         </div>
     </div>
 </template>
@@ -51,8 +51,8 @@
     .banner {
         flex: none;
         order: 0;
-        width: 134.8px;
-        height: 811.8px;
+        width: 146px;
+        height: 814px;
         flex-grow: 0;
     }
 
@@ -62,13 +62,14 @@
         align-items: flex-start;
         padding: 0px;
         gap: 47px;
-
+        font-family: 'IBM Plex Sans';
+        font-style: normal;
         width: 190px;
         height: 477.03px;
-
         flex: none;
         order: 1;
         flex-grow: 0;
+        color: #212330;
     }
 }
 
@@ -77,17 +78,15 @@
     .login {
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
         padding: 0px;
-
         position: relative;
-
-        background: #FFFFFF;
     }
 
     .banner {
+        transform: rotate(90deg);
         flex: none;
-        order: 1;
+        order: 0;
         flex-grow: 0;
     }
 
@@ -95,18 +94,19 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 121px 304px;
-        gap: 47px;
-
+        gap: 48px;
+        font-family: 'IBM Plex Sans';
+        font-style: normal;
         flex: none;
-        order: 0;
+        order: 1;
         flex-grow: 0;
+        color: #212330;
     }
 
 }
 </style>
 
-<script>
+<script lang="ts">
 import Window from '../util/VueWindow.vue';
 import MobileBanner from '../assets/banner-mobile.svg';
 import DesktopBanner from '../assets/banner-desktop.svg';
