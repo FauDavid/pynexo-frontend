@@ -5,10 +5,27 @@
                 <v-img src="../assets/logo-horizontal.svg"></v-img>
             </div>
             <v-spacer></v-spacer>
+            <div class="top-menu-name">
+                <p><b>{{ this.firstName + ' ' + this.lastName }}</b></p>
+            </div>
             <div class="top-menu">
-                <v-btn icon>
-                    <v-icon color="#3A4276"> mdi mdi-dots-horizontal</v-icon>
-                </v-btn>
+                <v-menu offset-y>
+                    <template v-slot:activator="{ on, attrs }">
+                        <v-btn icon v-bind="attrs" v-on="on">
+                            <v-icon color="#3A4276"> mdi mdi-dots-horizontal</v-icon>
+                        </v-btn>
+                    </template>
+                    <v-list elevation="0" dense>
+                        <v-list-item @click="logout">
+                            <v-icon color="#3A4276"> mdi mdi-logout</v-icon>
+                            <v-list-item-content>
+                                <div class="menu-text">
+                                <v-list-item-title>Logout</v-list-item-title>
+                                </div>
+                            </v-list-item-content>
+                        </v-list-item>
+                    </v-list>
+                </v-menu>
             </div>
         </div>
         <div class="my-account">
@@ -18,7 +35,7 @@
             <v-card elevation="0" color="#F1F3F6" class="balance-card">
                 <div class="balance-card-text">
                     <v-card-title class="balance-card-text-money">
-                        <p style="color: #3A4276"><b>$40,50</b></p>
+                        <p style="color: #3A4276"><b>{{ this.balance }}</b></p>
                     </v-card-title>
                     <v-card-subtitle class="balance-card-text-balance">
                         <p>Actual balance</p>
@@ -46,28 +63,21 @@
                 <v-btn elevation="0" fab color="#49D8A4">
                     <v-icon color="#3A4276">mdi mdi-plus</v-icon>
                 </v-btn>
-                <v-card elevation="0" color="#F1F3F6" class="send-voucher-user-card">
-                    <div class="send-voucher-user-card-content">
-                        <v-avatar size="56">
-                            <v-img src="https://cdn.pixabay.com/photo/2020/06/24/19/12/cabbage-5337431_1280.jpg">
-                            </v-img>
-                        </v-avatar>
-                        <v-card-title class="send-voucher-user-card-text">
-                            <p>Bob</p>
-                        </v-card-title>
-                    </div>
-                </v-card>
-                <v-card elevation="0" color="#F1F3F6" class="send-voucher-user-card">
-                    <div class="send-voucher-user-card-content">
-                        <v-avatar size="56">
-                            <v-img src="https://cdn.pixabay.com/photo/2020/06/24/19/12/cabbage-5337431_1280.jpg">
-                            </v-img>
-                        </v-avatar>
-                        <v-card-title class="send-voucher-user-card-text">
-                            <p>Alice</p>
-                        </v-card-title>
-                    </div>
-                </v-card>
+                <v-list-item v-for="(contact, i) in contacts.slice(0, 2)" :key="i">
+                    <v-card elevation="0" color="#F1F3F6" class="send-voucher-user-card">
+                        <div class="send-voucher-user-card-content">
+                            <v-avatar color="#3A4276">
+                            <span class="white--text text-h5">
+                                {{contact.first_name.slice(0, 1)}}{{contact.last_name.slice(0, 1)}}
+                            </span>
+                            </v-avatar>
+                            <v-card-title class="send-voucher-user-card-text">
+                                <p>{{contact.first_name}}</p>
+                            </v-card-title>
+                        </div>
+                    </v-card>
+                </v-list-item>
+
             </div>
         </div>
         <div class="send-voucher">
@@ -121,7 +131,6 @@
 </template>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans');
 .dashboard {
     display: flex;
     flex-direction: column;
@@ -130,6 +139,17 @@
     padding: 28px 0px;
     position: relative;
     background: #FFFFFF;
+}
+
+.menu-text {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    color: #3A4276;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
 }
 
 .top {
@@ -154,13 +174,27 @@
     flex-grow: 0;
 }
 
-.top-menu {
+.top-menu-name {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 0px;
+    flex-direction: row;
+    align-items: center;
+    padding-top: 15px;
     flex: none;
     order: 1;
+    flex-grow: 0;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-size: 14px;
+    color: #3A4276;
+}
+
+.top-menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    flex: none;
+    order: 2;
     flex-grow: 0;
 }
 
@@ -176,7 +210,7 @@
 }
 
 .my-account-text {
-    font-family: 'IBM Plex Sans';
+    font-family: 'Montserrat';
     font-style: normal;
     font-weight: 900;
     font-size: 24px;
@@ -208,7 +242,7 @@
 }
 
 .balance-card-text-money {
-    font-family: 'IBM Plex Sans';
+    font-family: 'Montserrat';
     font-style: normal;
     font-weight: 900;
     font-size: 34px;
@@ -216,7 +250,7 @@
 }
 
 .balance-card-text-balance {
-    font-family: 'IBM Plex Sans';
+    font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -251,7 +285,7 @@
 }
 
 .send-voucher-text {
-    font-family: 'IBM Plex Sans';
+    font-family: 'Montserrat';
     font-style: normal;
     font-weight: 900;
     font-size: 24px;
@@ -268,7 +302,6 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 20px;
     flex: none;
     order: 1;
 }
@@ -277,13 +310,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 10px 5px;
+    align-content: center;
     background: #F1F3F6;
     flex: none;
     order: 1;
     flex-grow: 0;
     border-radius: 12px;
-    width: max-content;
+    width: 80px;
+    height: 100px;
+    padding-top: 12px;
 }
 
 .send-voucher-user-card-content {
@@ -294,13 +329,12 @@
     flex: none;
     order: 0;
     flex-grow: 0;
-    gap: 5px;
 }
 
 .send-voucher-user-card-text {
-    font-family: 'IBM Plex Sans';
+    font-family: 'Montserrat';
     font-style: normal;
-    font-size: 14px;
+    font-size: 12px;
     text-align: center;
     line-height: 0;
     color: #3A4276;
@@ -339,10 +373,10 @@
 }
 
 .service-card-text {
-    font-family: 'IBM Plex Sans';
+    font-family: 'Montserrat';
     font-style: normal;
-    font-weight: 600;
-    font-size: 14px;
+    font-weight: 400;
+    font-size: 12px;
     text-align: center;
     color: #7B7F9E;
     flex: none;
@@ -350,3 +384,22 @@
     flex-grow: 0;
 }
 </style>
+
+<script>
+export default {
+  data() {
+    return {
+      username: this.$route.params.username,
+      balance: this.$store.getters.getBalanceByUsername(this.$route.params.username),
+      firstName: this.$store.getters.getFirstNameByUsername(this.$route.params.username),
+      lastName: this.$store.getters.getLastNameByUsername(this.$route.params.username),
+      contacts: this.$store.getters.getContactsByUsername(this.$route.params.username),
+    };
+  },
+  methods: {
+    logout() {
+      this.$router.replace({ name: 'login' });
+    },
+  },
+};
+</script>

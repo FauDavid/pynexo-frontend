@@ -4,7 +4,7 @@ import Vuex from 'vuex';
 Vue.use(Vuex);
 
 const users = () => [{
-  id: 1, username: 'asmedley0', password: 'rksy0Rvkvk', email: 'asmedley0@csmonitor.com', first_name: 'Abey', last_name: 'Smedley', gender: 'Male', balance: '$95.53',
+  id: 1, username: 'asmedley0', password: 'rksy0Rvkvk', email: 'asmedley0@csmonitor.com', first_name: 'Abey', last_name: 'Smedley', gender: 'Male', balance: '$95.53', contacts: [2, 3, 4],
 },
 {
   id: 2, username: 'fbergin1', password: 'vZ3WnG', email: 'fbergin1@wikia.com', first_name: 'Fae', last_name: 'Bergin', gender: 'Female', balance: '$60.93',
@@ -39,8 +39,22 @@ export default new Vuex.Store({
     users: users(),
   },
   getters: {
-    users(state) {
-      return state.users;
+    getUserById: (state) => (id: number) => state.users
+      .find((user) => user.id === id),
+    getUserByUsername: (state) => (username: string) => state.users
+      .find((user) => user.username === username),
+    getBalanceByUsername: (state) => (username: string) => state.users
+      .find((user) => user.username === username)
+      ?.balance,
+    getFirstNameByUsername: (state) => (username: string) => state.users
+      .find((user) => user.username === username)
+      ?.first_name,
+    getLastNameByUsername: (state) => (username: string) => state.users
+      .find((user) => user.username === username)
+      ?.last_name,
+    getContactsByUsername: (state, getters) => (username: string) => {
+      const contactsIds = state.users.find((user) => user.username === username)?.contacts;
+      return contactsIds?.map((contactId) => getters.getUserById(contactId));
     },
   },
   mutations: {
