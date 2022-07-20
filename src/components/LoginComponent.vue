@@ -60,6 +60,7 @@ export default {
       const user = this.$store.getters.getUserByUsername(username);
       if (user.username === username && user.password === password) {
         this.badCredentials = false;
+        localStorage.setItem('user', JSON.stringify(user));
         this.$router.replace({ name: 'dashboard', params: { username } });
       } else {
         this.badCredentials = true;

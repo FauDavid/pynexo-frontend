@@ -389,17 +389,26 @@
 export default {
   data() {
     return {
-      username: this.$route.params.username,
-      balance: this.$store.getters.getBalanceByUsername(this.$route.params.username),
-      firstName: this.$store.getters.getFirstNameByUsername(this.$route.params.username),
-      lastName: this.$store.getters.getLastNameByUsername(this.$route.params.username),
-      contacts: this.$store.getters.getContactsByUsername(this.$route.params.username),
+      loggedUser: [],
+      username: '',
+      balance: '',
+      firstName: '',
+      lastName: '',
+      contacts: '',
     };
   },
   methods: {
     logout() {
       this.$router.replace({ name: 'login' });
     },
+  },
+  mounted() {
+    this.loggedUser = JSON.parse(localStorage.getItem('user'));
+    this.username = this.loggedUser.username;
+    this.balance = this.$store.getters.getBalanceByUsername(this.username);
+    this.firstName = this.$store.getters.getFirstNameByUsername(this.username);
+    this.lastName = this.$store.getters.getLastNameByUsername(this.username);
+    this.contacts = this.$store.getters.getContactsByUsername(this.username);
   },
 };
 </script>
