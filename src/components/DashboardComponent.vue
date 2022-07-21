@@ -1,33 +1,22 @@
 <template>
     <div class="dashboard">
         <div class="top">
-            <div class="top-logo">
-                <v-img src="../assets/logo-horizontal.svg"></v-img>
+            <div class="top-menu">
+                <v-btn icon @click.native="drawer=!drawer">
+                    <v-icon color="#3A4276">
+                        mdi mdi-dots-horizontal
+                    </v-icon>
+                </v-btn>
             </div>
-            <v-spacer></v-spacer>
             <div class="top-menu-name">
                 <p><b>{{ this.firstName + ' ' + this.lastName }}</b></p>
             </div>
-            <div class="top-menu">
-                <v-menu offset-y>
-                    <template v-slot:activator="{ on, attrs }">
-                        <v-btn icon v-bind="attrs" v-on="on">
-                            <v-icon color="#3A4276"> mdi mdi-dots-horizontal</v-icon>
-                        </v-btn>
-                    </template>
-                    <v-list elevation="0" dense>
-                        <v-list-item @click="logout">
-                            <v-icon color="#3A4276"> mdi mdi-logout</v-icon>
-                            <v-list-item-content>
-                                <div class="menu-text">
-                                <v-list-item-title>Logout</v-list-item-title>
-                                </div>
-                            </v-list-item-content>
-                        </v-list-item>
-                    </v-list>
-                </v-menu>
+            <v-spacer></v-spacer>
+            <div class="top-logo">
+                <v-img src="../assets/logo-horizontal.svg"></v-img>
             </div>
         </div>
+        <DashboardMenu :drawer="drawer"></DashboardMenu>
         <div class="my-account">
             <div class="my-account-text">
                 <p>My account</p>
@@ -67,9 +56,9 @@
                     <v-card elevation="0" color="#F1F3F6" class="send-voucher-user-card">
                         <div class="send-voucher-user-card-content">
                             <v-avatar color="#3A4276">
-                            <span class="white--text text-h5">
+                                <span class="white--text text-h5">
                                 {{contact.first_name.slice(0, 1)}}{{contact.last_name.slice(0, 1)}}
-                            </span>
+                                </span>
                             </v-avatar>
                             <v-card-title class="send-voucher-user-card-text">
                                 <p>{{contact.first_name}}</p>
@@ -130,6 +119,40 @@
 
 </template>
 
+<script>
+import DashboardMenu from './DashboardMenu.vue';
+
+export default {
+  components: {
+    DashboardMenu,
+  },
+  data() {
+    return {
+      drawer: false,
+      loggedUser: [],
+      username: '',
+      balance: '',
+      firstName: '',
+      lastName: '',
+      contacts: '',
+    };
+  },
+  methods: {
+    logout() {
+      this.$router.replace({ name: 'login' });
+    },
+  },
+  mounted() {
+    this.loggedUser = JSON.parse(localStorage.getItem('user'));
+    this.username = this.loggedUser.username;
+    this.balance = this.$store.getters.getBalanceByUsername(this.username);
+    this.firstName = this.$store.getters.getFirstNameByUsername(this.username);
+    this.lastName = this.$store.getters.getLastNameByUsername(this.username);
+    this.contacts = this.$store.getters.getContactsByUsername(this.username);
+  },
+};
+</script>
+
 <style scoped>
 .dashboard {
     display: flex;
@@ -170,7 +193,7 @@
     align-items: center;
     padding: 0px;
     flex: none;
-    order: 0;
+    order: 2;
     flex-grow: 0;
 }
 
@@ -180,7 +203,7 @@
     align-items: center;
     padding-top: 15px;
     flex: none;
-    order: 1;
+    order: 0;
     flex-grow: 0;
     font-family: 'Montserrat';
     font-style: normal;
@@ -194,7 +217,7 @@
     align-items: center;
     padding: 0px;
     flex: none;
-    order: 2;
+    order: 0;
     flex-grow: 0;
 }
 
@@ -384,31 +407,3 @@
     flex-grow: 0;
 }
 </style>
-
-<script>
-export default {
-  data() {
-    return {
-      loggedUser: [],
-      username: '',
-      balance: '',
-      firstName: '',
-      lastName: '',
-      contacts: '',
-    };
-  },
-  methods: {
-    logout() {
-      this.$router.replace({ name: 'login' });
-    },
-  },
-  mounted() {
-    this.loggedUser = JSON.parse(localStorage.getItem('user'));
-    this.username = this.loggedUser.username;
-    this.balance = this.$store.getters.getBalanceByUsername(this.username);
-    this.firstName = this.$store.getters.getFirstNameByUsername(this.username);
-    this.lastName = this.$store.getters.getLastNameByUsername(this.username);
-    this.contacts = this.$store.getters.getContactsByUsername(this.username);
-  },
-};
-</script>

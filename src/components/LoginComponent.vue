@@ -71,6 +71,7 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 .v-btn {
     text-transform: none;
     letter-spacing: 0;
