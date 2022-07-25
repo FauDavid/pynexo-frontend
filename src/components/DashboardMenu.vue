@@ -1,6 +1,6 @@
 <template>
     <v-navigation-drawer color="#F1F3F6" :value="drawer" absolute temporary
-    class="menu-background" :width="300">
+    class="menu-background" :width=max-content>
     <div class="top-navigation">
         <v-list-item class="logged-user">
             <v-list-item-avatar>
@@ -14,7 +14,7 @@
             </v-list-item-content>
         </v-list-item>
         <div class="close-button">
-            <v-btn icon @click="drawerOpen">
+            <v-btn icon @click="drawer!=drawer">
                 <v-icon>mdi mdi-close</v-icon>
             </v-btn>
         </div>
@@ -74,7 +74,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 
 .menu-background {
     display: flex;
@@ -93,6 +93,7 @@ export default {
     order: 1;
     flex-grow: 0;
     padding: 30px;
+    color: #1B1D28;
 }
 
 .logged-user {
@@ -161,7 +162,7 @@ export default {
     align-items: center;
     padding: 15px;
     flex: none;
-    order: 1;
+    order: 0;
     flex-grow: 0;
     padding-top: 75px;
 }
